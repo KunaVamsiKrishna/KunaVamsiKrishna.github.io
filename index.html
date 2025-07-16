@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuna Vamsi Krishna - AI/ML Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Deep space background with a subtle radial gradient */
+            background: radial-gradient(ellipse at bottom, #0d1a2e 0%, #01040a 100%);
+            color: #e0e7ff; /* Light blue-white for main text */
+            overflow-x: hidden;
+            cursor: none; /* Hide default cursor */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #38bdf8; /* Vibrant light blue for titles */
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8); /* Stronger blue glow */
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #0ea5e9; /* Sky blue for underline */
+            margin: 10px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.7); /* Blue glow for underline */
+        }
+        .card {
+            /* Darker, more transparent background for cards */
+            background-color: rgba(1, 4, 10, 0.85);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Deeper shadow for floating effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(10px); /* More pronounced frosted glass */
+            border: 1px solid rgba(14, 165, 233, 0.4); /* Blue border */
+        }
+        .card:hover {
+            transform: translateY(-12px); /* Slightly more lift */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8); /* Even deeper shadow on hover */
+            border-color: rgba(56, 189, 248, 0.7); /* Brighter blue border on hover */
+        }
+        .skill-badge {
+            background-color: #1e3a8a; /* Deep blue for skill badges */
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.3rem;
+            display: inline-block;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 8px rgba(30, 58, 138, 0.6); /* Blue glow */
+        }
+        .skill-badge:hover {
+            background-color: #3b82f6; /* Lighter blue on hover */
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.8); /* Stronger blue glow on hover */
+        }
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            text-align: center;
+        }
+        .project-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #93c5fd; /* Light blue for project titles */
+            text-shadow: 0 0 10px rgba(147, 197, 253, 0.6); /* Subtle blue glow */
+        }
+        .project-card p {
+            color: #bfdbfe; /* Lighter blue-gray for project text */
+        }
+        .project-card .tech-stack .skill-badge {
+            background-color: #2563eb; /* Slightly different blue for project tech */
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+        }
+        .project-card .tech-stack .skill-badge:hover {
+            background-color: #60a5fa; /* Lighter blue on hover */
+            box-shadow: 0 0 12px rgba(96, 165, 250, 0.8);
+        }
+
+        /* Dynamic Background Particles (Sparkles - now more like stars/nebula dust) */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            /* Subtle nebula-like background elements */
+            background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+                              radial-gradient(circle at bottom right, rgba(30, 58, 138, 0.08) 0%, transparent 50%);
+        }
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7); /* White for sparkle effect */
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8); /* Stronger glowing effect */
+            animation: floatAndTwinkle 18s infinite ease-in-out; /* Longer, more varied animation */
+            opacity: 0; /* Start invisible */
+        }
+        @keyframes floatAndTwinkle {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(-40px) translateX(20px) scale(1.1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-80px) translateX(-20px) scale(1.2);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translateY(-40px) translateX(20px) scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 0.7;
+            }
+        }
+
+        /* Hero Section Animations (kept the same, they fit well) */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in { animation: fadeIn 1.5s ease-out; }
+        .animate-slide-in-left { animation: slideInLeft 1s ease-out; }
+        .animate-slide-in-right { animation: slideInRight 1s ease-out; }
+        .animate-fade-in-down { animation: fadeInDown 1s ease-out; }
+
+        /* Mouse Follower Effect - now a glowing blue orb */
+        #mouse-follower {
+            position: fixed;
+            width: 12px; /* Slightly larger */
+            height: 12px; /* Slightly larger */
+            background-color: rgba(56, 189, 248, 0.6); /* Semi-transparent vibrant blue */
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.1s ease, height 0.1s ease, background-color 0.1s ease, box-shadow 0.1s ease;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.9); /* Stronger blue glow */
+            z-index: 9999;
+        }
+        body:active #mouse-follower {
+            width: 18px; /* Larger on click */
+            height: 18px; /* Larger on click */
+            background-color: rgba(14, 165, 233, 0.9); /* More opaque blue on click */
+            box-shadow: 0 0 25px rgba(14, 165, 233, 1); /* Intense blue glow on click */
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .grid-cols-1-md-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-cols-1-md-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .grid-cols-1-lg-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Glow effect on hover for the name */
+        header h1 {
+            transition: text-shadow 0.6s ease-in-out; /* Added transition for smooth glow */
+        }
+        header h1:hover {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(56, 189, 248, 0.9), 0 0 40px rgba(14, 165, 233, 0.7);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Dynamic Particles Background -->
+    <div class="particles"></div>
+
+    <!-- Mouse Follower Element -->
+    <div id="mouse-follower"></div>
+
+    <header class="py-8 text-center animate-fade-in mt-16">
+        <h1 class="text-5xl font-extrabold text-white mb-4">Kuna Vamsi Krishna</h1>
+        <p class="text-xl text-gray-300">AI/ML Enthusiast | Developer | Innovator</p>
+    </header>
+
+    <main class="container space-y-20">
+
+        <!-- About Me Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">About Me</h2>
+            <div class="card text-lg leading-relaxed">
+                <p class="mb-4">
+                    Constantly seeking to engage my knowledge to learn something useful and keep challenging myself to be a better performer in accordance with company requirements. I am a good and quick learner, a dedicated team player, and I love to explore new technologies, adapting flexibly to different environments.
+                </p>
+                <p>
+                    My passion lies in Artificial Intelligence and Machine Learning, where I leverage my skills in Python, Computer Vision, and Deep Learning to develop innovative solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Technical Skills</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">JAVA</span>
+                        <span class="skill-badge">C</span>
+                        <span class="skill-badge">DBMS</span>
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Machine Learning</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">React</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Certifications & Knowledge</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Python for Data Science, AI & Development</span>
+                        <span class="skill-badge">Artificial Intelligence Foundation</span>
+                        <span class="skill-badge">Introduction to Deep Learning</span>
+                        <span class="skill-badge">Web Application Development</span>
+                        <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge">Machine Learning Algorithms</span>
+                        <span class="skill-badge">Cloud Platforms (AWS/GCP)</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Behavioral Skills</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Leadership</span>
+                        <span class="skill-badge">Team Player</span>
+                        <span class="skill-badge">Quick Learner</span>
+                        <span class="skill-badge">Analytical Skills</span>
+                        <span class="skill-badge">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">My AI/ML Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card project-card">
+                    <h3>Image-Based Driver Drowsiness Detection System</h3>
+                    <p>
+                        Developed a real-time driver monitoring system that detects drowsiness and distractions using facial features captured via webcam. Utilizes Convolutional Neural Networks (CNN) for feature extraction and Support Vector Machine (SVM) for classification. Implemented YOLO for mobile phone distraction detection to enhance driver safety. The system triggers an alert upon detecting drowsiness or distraction to prevent road accidents.
+                    </p>
+                    <div class="tech-stack flex flex-wrap justify-center mt-4">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">OpenCV</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">Keras</span>
+                        <span class="skill-badge">YOLO</span>
+                        <span class="skill-badge">Machine Learning</span>
+                        <span class="skill-badge">Computer Vision</span>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <h3>Air scribe: Hand Gesture to Text Converter</h3>
+                    <p>
+                        Developed an innovative system that translates hand gestures into text in real-time using the Python module Mediapipe for gesture recognition. The project involved designing recognition algorithms, processing hand movements, and integrating the system with text output interfaces to facilitate seamless communication for users.
+                    </p>
+                    <div class="tech-stack flex flex-wrap justify-center mt-4">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Mediapipe</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">Real-time Processing</span>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <h3>Hospital Management System (Full Stack)</h3>
+                    <p>
+                        Developed a comprehensive management system with role-based access for Admin, Doctor, and Receptionist roles to manage appointments, doctors, and patient records. Showcases full-stack development capabilities.
+                    </p>
+                    <div class="tech-stack flex flex-wrap justify-center mt-4">
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">Spring Boot</span>
+                        <span class="skill-badge">JPA</span>
+                        <span class="skill-badge">Hibernate</span>
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">React</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Paper Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Research & Publications</h2>
+            <div class="card">
+                <h3 class="text-2xl font-bold text-blue-400 mb-2">IMAGE-BASED DRIVER DROWSINESS DETECTION USING MACHINE LEARNING</h3>
+                <p class="text-gray-400 mb-4">Published In IJRAR (www.ijrar.org) | Volume 12 Issue 2 April 2025 | Date of Publication: 09-April-2025</p>
+                <p class="text-lg leading-relaxed">
+                    This paper details a real-time driver monitoring system that detects drowsiness and distractions using facial features captured via webcam. The system leverages Convolutional Neural Networks (CNN) for feature extraction and Support Vector Machine (SVM) for classification. It also incorporates YOLO for mobile phone distraction detection to enhance driver safety, triggering alerts to prevent road accidents.
+                </p>
+                <div class="mt-4">
+                    <a href="https://www.ijrar.org/papers/IJRAR1ECP252.pdf" target="_blank" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full transition duration-300 shadow-lg">
+                        View Publication
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Achievements</h2>
+            <div class="card">
+                <ul class="list-disc list-inside text-lg space-y-2">
+                    <li>Developed a real-time hand gesture recognition system, enhancing user interaction through advanced computer vision techniques.</li>
+                    <li>Attended "cybersecurity workshop" Workshop in STEPCONE 2023 held during January 31- February 02, 2023.</li>
+                    <li>Participated in the event named "CODEATHON" organized by GMRIT ACM & CSI Student Chapters, Rajam on 20th March, 2022.</li>
+                    <li>Mentored junior team members, fostering a collaborative and productive team environment.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Internship Experience -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Internship Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">Intern, NECUN Innovations Pvt Ltd</h3>
+                    <p class="text-gray-400 mb-4">July 2023 - August 2023 | Hyderabad, India</p>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Developed an OMR sheet scanning and evaluation app using OpenCV and computer vision techniques.</li>
+                        <li>Collaborated with the team to optimize workflow and achieve objectives.</li>
+                        <li>Assisted with projects by applying strong analytical skills and studies.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">Intern, BrainOvision Solutions</h3>
+                    <p class="text-gray-400 mb-4">August 2024 - November 2024 | Hyderabad, India</p>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Acquired hands-on experience in web application development using Java, Servlets, JSP, Hibernate, Spring, Spring Boot, MySQL, HTML, CSS, and JavaScript.</li>
+                        <li>Worked on both front-end and back-end development tasks.</li>
+                        <li>Built scalable and high-performance solutions through collaboration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Education</h2>
+            <div class="grid grid-cols-1 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">B. Tech, GMR Institute of Technology</h3>
+                    <p class="text-gray-400 mb-4">2021-2025 | Rajam, AP</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">Intermediate, Sri Gurukula Junior College</h3>
+                    <p class="text-gray-400 mb-4">2019-2021 | Kasibugga, AP</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">SSC, Sri Gurukula Vidyalayam</h3>
+                    <p class="text-gray-400 mb-4">2018-2019 | Kasibugga, AP</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="animate-fade-in-down">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="card text-center">
+                <p class="text-xl mb-4">I'm always open to new opportunities and collaborations.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                    <a href="https://github.com/KunaVamsiKrishna" target="_blank" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/vamsi-krishna-kuna-bb8b14258/" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+                        Connect on LinkedIn
+                    </a>
+                    <a href="https://drive.google.com/file/d/1f7a5hi1JpBm7mhJAhQzvx8VIyCfI_Uwm/view?usp=sharing" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+                        Check my Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 text-center text-gray-500 text-sm mt-20">
+        <p>&copy; 2025 Kuna Vamsi Krishna. All rights reserved.</p>
+        <p>Designed with <span class="text-red-500">&hearts;</span> and AI/ML magic.</p>
+    </footer>
+
+    <script>
+        // JavaScript for dynamic particle effects
+        const particlesContainer = document.querySelector('.particles');
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 4 + 1; // Size between 1px and 5px for sparkles
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDuration = `${Math.random() * 10 + 10}s`; // 10-20s duration
+            particle.style.animationDelay = `${Math.random() * 5}s`; // Random delay
+            particlesContainer.appendChild(particle);
+
+            // Remove particle after animation ends to prevent memory leak
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Create a continuous stream of particles (slightly reduced)
+        setInterval(createParticle, 400); // Create a new particle every 400ms (was 200ms)
+
+        // Intersection Observer for fade-in-down animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-down');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add a class to header after a short delay for initial animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('header').classList.add('animate-fade-in');
+        });
+
+        // Mouse Follower Effect
+        const mouseFollower = document.getElementById('mouse-follower');
+        document.addEventListener('mousemove', (e) => {
+            mouseFollower.style.left = `${e.clientX}px`;
+            mouseFollower.style.top = `${e.clientY}px`;
+        });
+    </script>
+</body>
+</html>
