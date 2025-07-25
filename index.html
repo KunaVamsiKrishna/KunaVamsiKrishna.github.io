@@ -83,6 +83,11 @@
             font-weight: 700;
             color: #93c5fd; /* Light blue for project titles */
             text-shadow: 0 0 10px rgba(147, 197, 253, 0.6); /* Subtle blue glow */
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .project-card a:hover h3 {
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
         }
         .project-card p {
             color: #bfdbfe; /* Lighter blue-gray for project text */
@@ -264,6 +269,7 @@
                         <span class="skill-badge">Web Application Development</span>
                         <span class="skill-badge">Data Analysis</span>
                         <span class="skill-badge">Machine Learning Algorithms</span>
+                        <span class="skill-badge">Cloud Platforms (AWS/GCP)</span>
                     </div>
                 </div>
                 <div class="card">
@@ -284,7 +290,9 @@
             <h2 class="section-title">My AI/ML Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card project-card">
-                    <h3>Image-Based Driver Drowsiness Detection System</h3>
+                    <a href="https://github.com/KunaVamsiKrishna/driver-drowsiness-detection" target="_blank">
+                        <h3>Image-Based Driver Drowsiness Detection System</h3>
+                    </a>
                     <p>
                         Developed a real-time driver monitoring system that detects drowsiness and distractions using facial features captured via webcam. Utilizes Convolutional Neural Networks (CNN) for feature extraction and Support Vector Machine (SVM) for classification. Implemented YOLO for mobile phone distraction detection to enhance driver safety. The system triggers an alert upon detecting drowsiness or distraction to prevent road accidents.
                     </p>
@@ -299,7 +307,9 @@
                     </div>
                 </div>
                 <div class="card project-card">
-                    <h3>Air scribe: Hand Gesture to Text Converter</h3>
+                    <a href="https://github.com/KunaVamsiKrishna/Virtual-Gesture-Canvas" target="_blank">
+                        <h3>Air scribe: Hand Gesture to Text Converter</h3>
+                    </a>
                     <p>
                         Developed an innovative system that translates hand gestures into text in real-time using the Python module Mediapipe for gesture recognition. The project involved designing recognition algorithms, processing hand movements, and integrating the system with text output interfaces to facilitate seamless communication for users.
                     </p>
@@ -311,7 +321,9 @@
                     </div>
                 </div>
                 <div class="card project-card">
-                    <h3>Hospital Management System (Full Stack)</h3>
+                     <a href="https://github.com/KunaVamsiKrishna/Hospital-Management-System" target="_blank">
+                        <h3>Hospital Management System (Full Stack)</h3>
+                    </a>
                     <p>
                         Developed a comprehensive management system with role-based access for Admin, Doctor, and Receptionist roles to manage appointments, doctors, and patient records. Showcases full-stack development capabilities.
                     </p>
@@ -326,6 +338,21 @@
                         <span class="skill-badge">React</span>
                     </div>
                 </div>
+                <div class="card project-card">
+                    <a href="https://github.com/KunaVamsiKrishna/AutomateGame" target="_blank">
+                        <h3>Hand Gesture-Based Game Controller System</h3>
+                    </a>
+                    <p>
+                        Engineered a system that allows users to play the popular game 'Hill Climb Racing' using hand gestures. This project captures hand movements via a webcam, processes them in real-time using computer vision, and translates specific gestures into in-game actions like acceleration and braking, offering an immersive and interactive gaming experience.
+                    </p>
+                    <div class="tech-stack flex flex-wrap justify-center mt-4">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">OpenCV</span>
+                        <span class="skill-badge">Mediapipe</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">PyAutoGUI</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -338,7 +365,7 @@
                 <p class="text-lg leading-relaxed">
                     This paper details a real-time driver monitoring system that detects drowsiness and distractions using facial features captured via webcam. The system leverages Convolutional Neural Networks (CNN) for feature extraction and Support Vector Machine (SVM) for classification. It also incorporates YOLO for mobile phone distraction detection to enhance driver safety, triggering alerts to prevent road accidents.
                 </p>
-                <div class="mt-4 flex justify-center"> <!-- Added flex and justify-center here -->
+                <div class="mt-4 text-center">
                     <a href="https://www.ijrar.org/papers/IJRAR1ECP252.pdf" target="_blank" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full transition duration-300 shadow-lg">
                         View Publication
                     </a>
@@ -389,9 +416,8 @@
             <h2 class="section-title">Education</h2>
             <div class="grid grid-cols-1 gap-8">
                 <div class="card">
-                    <h3 class="text-2xl font-bold text-blue-400 mb-2">B. Tech in Artificial Intelligence and Machine Learning</h3>
-                    <p class="text-gray-400 mb-1">GMR Institute of Technology, Rajam, AP</p>
-                    <p class="text-gray-400">2021-2025</p>
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">B. Tech, GMR Institute of Technology</h3>
+                    <p class="text-gray-400 mb-4">2021-2025 | Rajam, AP</p>
                 </div>
                 <div class="card">
                     <h3 class="text-2xl font-bold text-blue-400 mb-2">Intermediate, Sri Gurukula Junior College</h3>
